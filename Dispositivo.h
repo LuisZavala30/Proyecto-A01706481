@@ -27,8 +27,8 @@ class Dispositivo{   //Clase padre
     public:
         Dispositivo(string _tipo, int _id); //Constructor por default
         Dispositivo(string _tipo, int _id, string _ubicacion); //Constructor
-        virtual void encender(){};    //Metodo virtual encender sera sobreescrito
-        virtual void apagar(){};      //Metodo virtual apagar sera sobreescrito
+        virtual void encender();    //Metodo virtual encender sera sobreescrito
+        virtual void apagar();      //Metodo virtual apagar sera sobreescrito
 
         string get_tipo(){return tipo;} //Getter tipo
         int get_id(){return id;}  //Getter id
@@ -37,7 +37,8 @@ class Dispositivo{   //Clase padre
 
         void set_status(bool s); //Setter status
 };
-
+void Dispositivo::encender(){};
+void Dispositivo::apagar(){};
 Dispositivo::Dispositivo(string _tipo, int _id)
 {
     tipo = _tipo;
