@@ -25,7 +25,7 @@ class Dispositivo{   //Clase padre
 
     //Declaro metodos publicos y constructores.
     public:
-        Dispositivo(string _tipo, int _id); //Constructor por default
+        Dispositivo(string _tipo, int _id); //Constructor 
         Dispositivo(string _tipo, int _id, string _ubicacion); //Constructor
         virtual void encender();    //Metodo virtual encender sera sobreescrito
         virtual void apagar();      //Metodo virtual apagar sera sobreescrito
