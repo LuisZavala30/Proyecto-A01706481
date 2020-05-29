@@ -9,32 +9,58 @@
 #include "Dispositivo.h" // Clase de mi proyecto
 #include "Hogar.h" // Clase de mi proyecto
 
-
-
-
 int main(){
-
-    cout<<"PRUEBA DE FUNCIONAMIENTO HASTA EL MOMENTO CON LA IMPLEMENTACION DE HERENCIA, SOBREESCRITURA Y SOBRECARGA\n";
-    cout<<"LA VERSION FINAL CONTARA CON INTERFAZ GRAFICA PARA UN FUNCIONAMIENTO MAS DINAMICO"<<endl;
+    Dispositivo** d;
+    int opcion;
 
     Hogar Casa1("Casa1");
-    cout<<"1-Test agregar_foco: ";
-    Casa1.agregar_foco(1,70,"Recamara");
+    Casa1.agregar_aire(1,24,"Sala");
+    Casa1.agregar_foco(2,70,"Recamara");
+    Casa1.agregar_ventilador(3, "Slow", "Cocina");
 
-    cout<<"\n2-Test agregar_aire: ";
-    Casa1.agregar_aire(2,24,"Sala");
+    int num = Casa1.get_num();
+    d = Casa1.get_disp();
 
-    cout<<"\n3-Test agregar_ventilador: ";
-    Casa1.agregar_ventilador(3,"Slow","Jardin");
 
-    cout<<"\n4-Test apagar_focos: ";
-    Casa1.apagar_focos();
+    //Trabajar con Aire ID=1
+    for(int i=0; i<num ; i++)
+    {
+        if(d[i]->get_id() == 1)
+        {
+            d[i]->encender();
+            dynamic_cast<Aire*>(d[i])->subir_temp(3);
+            dynamic_cast<Aire*>(d[i])->bajar_temp(1);
+        }
+    }
 
-    cout<<"\n5-Test encender_focos: ";
-    Casa1.encender_focos();
+    //Trabajar con foco ID=2
+    for(int i=0; i<num ; i++)
+    {
+        if(d[i]->get_id() == 2)
+        {
+            d[i]->encender();
+        }
+    }
 
-    cout<<"\n6-Test mostrar_dispositivos: \n";
+     //Trabajar con Ventilador ID=3
+    for(int i=0; i<num ; i++)
+    {
+        if(d[i]->get_id() == 3)
+        {
+            d[i]->encender();
+            dynamic_cast<Ventilador*>(d[i])->modificar_vel("Medium");
+        }
+    }
+
     Casa1.mostrar_dispositivos();
 
 
+
+
+
+
+
+
+
 }
+
