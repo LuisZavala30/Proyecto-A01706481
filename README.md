@@ -1,7 +1,7 @@
 - Luis Angel Zavala Robles A01706481
 - Programación Orientada a Objetos.
 # Proyecto de domótica.
-Sistema de pruebas para un proyecto personal de domotica. Servira para verificar el funcionamiento del hardware correspondiente mediante una comunicacion directa entre los dispositivos y el computador (por definir protocolo de comunicacion hasta que el hardware se encuentre 100% finalizado). Con el presente programa se podran simular acciones como encendido, apagado y modificacion de diversos parametros de cada dispositivo antes de su implementación final.
+Sistema de pruebas para un proyecto personal de domótica. Servirá para verificar el funcionamiento del hardware correspondiente mediante una comunicación directa entre los dispositivos y el computador (por definir protocolo de comunicación hasta que el hardware se encuentre 100% finalizado). Con el presente programa se podrán simular acciones como encendido, apagado y modificación de diversos parámetros de cada dispositivo antes de su implementación final.
 
 # Funcionalidades
 - Agregar dispositivos
