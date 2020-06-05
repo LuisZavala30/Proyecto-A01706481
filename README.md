@@ -3,19 +3,20 @@
 # Proyecto de domótica.
 Sistema de pruebas para un proyecto personal de domótica. Servirá para verificar el funcionamiento del hardware correspondiente mediante una comunicación directa entre los dispositivos y el computador (por definir protocolo de comunicación hasta que el hardware se encuentre 100% finalizado). Con el presente programa se podrán simular acciones como encendido, apagado y modificación de diversos parámetros de cada dispositivo antes de su implementación final.
 
-# Funcionalidades
-- Agregar dispositivos
-- Encender dispositivos
-- Apagar dispositivos
-- Modificar velocidad (Ventiladores)
-- Modificar temperatura (Aires)
+# Funcionalidades.
+- Agregar dispositivos.
+- Encender dispositivos.
+- Apagar dispositivos.
+- Modificar velocidad (Ventiladores).
+- Modificar temperatura (Aires).
 
 # Instalación recomendada.
-- Descargar el repositorio mediante download .zip
-- Descomprimir el archivo descargado
-- Compilar los archivos Dispositivo.h - Hogar.h - main.cpp y proceder a la ejecucion de main.cpp
+- Descargar el repositorio mediante download ZIP.
+- Descomprimir el archivo descargado.
+- Compilar archivos. 
+- Ejecución de main.cpp
 
 # Tecnologías utilizadas.
 - Lenguaje C++
-- IDE CodeBlocks
+- IDE CodeBlocks.
 
