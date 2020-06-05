@@ -27,7 +27,12 @@ class Hogar {
 //Metodos publicos y constructor de la clase
     public:
 
-        Hogar(string _nombre){
+        Hogar(){        //Constructor por default
+            nombre = "";
+            num=0;
+        }
+
+        Hogar(string _nombre){    // Constructor
             nombre = _nombre;
             num = 0;
         }
