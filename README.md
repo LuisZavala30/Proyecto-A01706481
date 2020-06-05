@@ -11,9 +11,9 @@ Sistema de pruebas para un proyecto personal de domotica. Servira para verificar
 - Modificar temperatura (Aires)
 
 # Instalacion recomendada.
--Descargar el repositorio mediante download .zip
--Descomprimir el archivo descargado
--Compilar los archivos Dispositivo.h - Hogar.h - main.cpp y proceder a la ejecucion de main.cpp
+- Descargar el repositorio mediante download .zip
+- Descomprimir el archivo descargado
+- Compilar los archivos Dispositivo.h - Hogar.h - main.cpp y proceder a la ejecucion de main.cpp
 
 # Tecnologias utilizadas.
 - Lenguaje C++
