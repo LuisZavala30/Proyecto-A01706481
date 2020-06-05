@@ -10,11 +10,11 @@ Sistema de pruebas para un proyecto personal de domótica. Servirá para verific
 - Modificar velocidad (Ventiladores).
 - Modificar temperatura (Aires).
 
-# Instalación recomendada.
+# Ejecución recomendada.
 - Descargar el repositorio mediante download ZIP.
 - Descomprimir el archivo descargado.
-- Compilar archivos. 
-- Ejecución de main.cpp
+- Compilar main.cpp - Dispositivo.h - Hogar.h 
+- Ejecutar de main.cpp
 
 # Tecnologías utilizadas.
 - Lenguaje C++
