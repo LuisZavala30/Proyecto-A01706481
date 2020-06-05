@@ -1,5 +1,12 @@
-# Proyecto-A01706481
+# A01706481
+# Programacion Orientada a Objetos.
 
-CONTEXTO.
-Como parte de un proyecto para sobrellevar la cuarentena, he decidido domotizar mi hogar. Para iniciar decidí controlar 3 tipos de dispositivos diferentes: focos, aires acondicionados y ventiladores. Una de las modalidades para controlar el sistema será desde un computador donde el usuario puede encender y apagar cada uno de los dispositivos además de aumentar o disminuir la temperatura en los aires acondicionados y la velocidad en los ventiladores. Específicamente en los focos he decidido calcular su consumo eléctrico para verificar su impacto en el consumo total del hogar proporcionado por CFE, por ello el programa debe ser capaz de calcular el consumo de los focos con base en su potencia y el tiempo en horas de encendido. Debido a que soy foráneo deseo tener el control tanto del hogar de mis padres como el de mi departamento en Querétaro y en un futuro agregar incluso el hogar de más familiares y de ciertos locales con los que contamos, es por ello por lo que es necesario tener clasificados los dispositivos por hogar donde se encuentran. 
-Este programa enviara un mensaje al hardware mediante un protocolo por definir, mismo que posteriormente interpretara el mensaje y realizara la accion correspondiente.
+# Proyecto de domotica.
+
+Sistema de pruebas para un proyecto personal de domotica. Servira para verificar el funcionamiento del hardware correspondiente mediante una comunicacion directa entre los dispositivos y el computador (por definir protocolo de comunicacion hasta que el hardware se encuentre 100% finalizado). Con el presente programa se podran simular acciones como encendido, apagado y modificacion de diversos parametros de cada dispositivo antes de su implementación final.
+
+# Instalacion recomendada
+1- Descargar el repositorio mediante download .zip
+2- Descomprimir el archivo descargado
+3- Compilar los archivos Dispositivo.h - Hogar.h - main.cpp y proceder a la ejecucion de main.cpp
+
