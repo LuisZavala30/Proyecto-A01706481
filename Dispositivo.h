@@ -14,9 +14,9 @@
 
 using namespace std;
 
-class Dispositivo{   //Clase padre
+class Dispositivo{   //CLASE ABSTRACTA
 
-    //Variables protected de la instancia que seran heredadas
+    //Variables protected que seran heredadas
     protected:
         string tipo;
         int id;
@@ -25,24 +25,22 @@ class Dispositivo{   //Clase padre
 
     //Declaro metodos publicos y constructores.
     public:
-        Dispositivo(string _tipo, int _id); //Constructor 
+        Dispositivo(); //Constructor por default
         Dispositivo(string _tipo, int _id, string _ubicacion); //Constructor
-        virtual void encender();    //Metodo virtual encender sera sobreescrito
-        virtual void apagar();      //Metodo virtual apagar sera sobreescrito
+        virtual void encender() = 0;    //Metodo Abstracto encender sera sobreescrito
+        virtual void apagar() = 0;      //Metodo Abstracto apagar sera sobreescrito
 
         string get_tipo(){return tipo;} //Getter tipo
         int get_id(){return id;}  //Getter id
         bool get_status(){return status;}   //Getter status
         string get_ubicacion(){return ubicacion;}  //Getter ubicacion
-
         void set_status(bool s); //Setter status
 };
-void Dispositivo::encender(){};
-void Dispositivo::apagar(){};
-Dispositivo::Dispositivo(string _tipo, int _id)
+
+Dispositivo::Dispositivo()
 {
-    tipo = _tipo;
-    id = _id;
+    tipo = "";
+    id = 0;
     status = false;
     ubicacion = "NA";
 }
@@ -70,16 +68,16 @@ class Foco : public Dispositivo{
 
     //Metodos  publicos y constructores.
     public:
-        Foco(string _tipo, int _id): Dispositivo(_tipo, _id){   //Constructor
+        Foco(): Dispositivo(){   //Constructor por default
                 potencia = 100;
                 tiempo_uso = 0;
-                gasto = 0;
+                gasto = 0.0;
         }
 
         Foco(string _tipo, int _id, string _ubicacion, int _potencia):Dispositivo(_tipo, _id, _ubicacion){  //Constructor
             potencia = _potencia;
             tiempo_uso = 0;
-            gasto = 0;
+            gasto = 0.0;
         }
 
         void encender();
@@ -107,7 +105,9 @@ void Foco :: apagar(){
     mensaje << id<<"-OFF";
 
     /*La variable mensaje se enviara al hardware mediante un protocolo de transmision por definir.
-        En el hardware se va decodificar y se realizara la accion correspondiente*/
+        En el hardware se va decodificar y se realizara la accion correspondiente. Ademas se recibira
+        el tiempo que duro encendido para modificar tiempo_uso*/
+
     cout <<"Foco Apagado..."<<endl;
     status = false;
 }
@@ -128,7 +128,7 @@ class Aire : public Dispositivo{
 
     //Metodos publicos y constructores de clase Aire
     public:
-        Aire(string _tipo ,int _id):Dispositivo(_tipo, _id){  //Constructor
+        Aire():Dispositivo(){  //Constructor por default
             temperatura = 20;
         }
 
@@ -203,12 +203,13 @@ class Ventilador : public Dispositivo{
         string velocidad;  // Slow, Medium, High
 
     public:
-        Ventilador(string _tipo, int _id):Dispositivo(_tipo, _id){
+        Ventilador():Dispositivo(){   //Constructor por Default
             velocidad = "Slow";
         }
 
-        Ventilador(string tip, int numID, string ubi, string vel) : Dispositivo(tip, numID, ubi) {
-            velocidad = vel;
+        Ventilador(string _tipo, int _id, string _ubicacion, string _velocidad) : Dispositivo(_tipo, _id, _ubicacion) {  // Constructor
+
+            velocidad = _velocidad;
         }
         void encender();
         void apagar();
@@ -223,7 +224,7 @@ void Ventilador :: encender(){
     /*La variable mensaje se enviara al hardware mediante un protocolo de transmision por definir.
         En el hardware se va decodificar y se realizara la accion correspondiente*/
 
-    cout <<"Ventilador Encendiendo..."<<endl;
+    cout <<"Ventilador Encendido..."<<endl;
     status=true;
 
 }
