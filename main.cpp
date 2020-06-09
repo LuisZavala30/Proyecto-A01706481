@@ -23,8 +23,6 @@ int main(){
     Casa1.agregar_ventilador(3, "Slow", "Cocina");
     d = Casa1.get_disp();
     total = Casa1.get_num();
-
-
     while(opcion != 9)
     {
         cout<<"\n---------------DISPOSITIVOS ACTUALES----------"<<endl;
