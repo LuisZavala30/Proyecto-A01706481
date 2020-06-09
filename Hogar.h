@@ -32,8 +32,8 @@ class Hogar {
             num=0;
         }
 
-        Hogar(string _nombre){    // Constructor
-            nombre = _nombre;
+        Hogar(string nombre_){    // Constructor
+            nombre = nombre_;
             num = 0;
         }
 
@@ -41,9 +41,9 @@ class Hogar {
         void encender_todos();
         void apagar_todos();
         void calc_gasto_total();
-        void agregar_foco(int _id, int _potencia, string _ubicacion);
-        void agregar_aire (int _id, int _temperatura, string _ubicacion);
-        void agregar_ventilador(int _id, string _velocidad, string _ubicacion);
+        void agregar_foco(int id_, int potencia_, string ubicacion_);
+        void agregar_aire (int id_, int temperatura_, string ubicacion_);
+        void agregar_ventilador(int id_, string velocidad_, string ubicacion_);
 
         int get_num(){return num;}
         Dispositivo** get_disp(){return disp;}
@@ -52,7 +52,11 @@ class Hogar {
 
 };
 
-
+/** mostrar_dispositivos imprime todos los dispositivos agregados
+ *  con su respectiva informacion dependiendo  el tipo de dispositivo
+ *  @param
+ *  @return
+ */
 void Hogar :: mostrar_dispositivos(){
 
     for (int i=0 ; i<num ; i++)
@@ -79,6 +83,13 @@ void Hogar :: mostrar_dispositivos(){
     }
 }
 
+/** encencer_todos codifica un mensaje que en posteriores
+ *  versiones se enviara al controlador.
+ *  Ademas modifica el status de todos los dispositivos
+ *  guardados en disp[] a true.
+ *  @param
+ *  @return
+ */
 void Hogar :: encender_todos(){
 
     stringstream mensaje;
@@ -98,6 +109,14 @@ void Hogar :: encender_todos(){
 
 }
 
+/** apagar_todos codifica un mensaje que en posteriores
+ *  versiones se enviara al controlador.
+ *  Ademas modifica el status de todos los dispositivos
+ *  guardados en disp[] a false.
+ *  @param
+ *  @return
+ */
+
 void Hogar :: apagar_todos(){
 
     stringstream mensaje;
@@ -116,6 +135,13 @@ void Hogar :: apagar_todos(){
     }
 }
 
+
+ /** calc_gasto_total realiza la suma de los gastos de todos
+  *  los focos presentes en disp[] haciendo llamada al metodo
+  *  calcular_gasto de cada foco.
+  *  @param
+  *  @return
+  */
 void Hogar :: calc_gasto_total() {
     float gasto_total;
 
@@ -130,24 +156,42 @@ void Hogar :: calc_gasto_total() {
     cout << "El gasto total al dia de hoy es: "<< gasto_total;
 }
 
+/** agregar_foco crea un objeto Foco y lo agrega
+ *  a arreglo de dispositivos disp[] en la posicion
+ *  num a la cual posteriormente se le suma 1.
+ *  @param int id del foco, int potencia del foco, string  ubicacion
+ *  @return
+ */
+void Hogar :: agregar_foco (int id_, int potencia_, string ubicacion_){
 
-void Hogar :: agregar_foco (int _id, int _potencia, string _ubicacion){
-
-    disp[num] =  new Foco("Foco", _id, _ubicacion, _potencia);  //Objeto creado en tiempo de ejecucion (Polimorfismo)
+    disp[num] =  new Foco("Foco", id_, ubicacion_, potencia_);  //Objeto creado en tiempo de ejecucion (Polimorfismo)
     cout<<"\nFoco Agregado"<<endl;
     num++;
 }
 
-void Hogar :: agregar_aire (int _id, int _temperatura, string _ubicacion){
 
-    disp[num] = new Aire("Aire", _id, _ubicacion, _temperatura);  //Objeto creado en tiempo de ejecucion (Polimorfismo)
+/** agregar_aire crea un objeto Aire y lo agrega
+ *  a arreglo de dispositivos disp[] en la posicion
+ *  num a la cual posteriormente se le suma 1.
+ *  @param int id del aire, int temperatura del aire, string  ubicacion
+ *  @return
+ */
+void Hogar :: agregar_aire (int id_, int temperatura_, string ubicacion_){
+
+    disp[num] = new Aire("Aire", id_, ubicacion_, temperatura_);  //Objeto creado en tiempo de ejecucion (Polimorfismo)
     cout<<"\nAire Agregado"<<endl;
     num++;
 }
 
-void Hogar :: agregar_ventilador(int _id, string _velocidad, string _ubicacion){
+/** agregar_ventilador crea un objeto Ventilador y lo agrega
+ *  a arreglo de dispositivos disp[] en la posicion
+ *  num a la cual posteriormente se le suma 1.
+ *  @param int id del ventilador, string velocidad del ventilador, string ubicacion
+ *  @return
+ */
+void Hogar :: agregar_ventilador(int id_, string velocidad_, string ubicacion_){
 
-    disp[num] = new Ventilador("Ventilador", _id , _ubicacion, _velocidad); //Objeto creado en tiempo de ejecucion (Polimorfismo)
+    disp[num] = new Ventilador("Ventilador", id_ , ubicacion_, velocidad_); //Objeto creado en tiempo de ejecucion (Polimorfismo)
     cout<<"\nVentilador Agregado"<<endl;
     num++;
 
