@@ -10,8 +10,6 @@
 #include <iostream>
 #include <sstream>
 
-
-
 using namespace std;
 
 class Dispositivo{   //CLASE ABSTRACTA
@@ -26,7 +24,7 @@ class Dispositivo{   //CLASE ABSTRACTA
     //Declaro metodos publicos y constructores.
     public:
         Dispositivo(); //Constructor por default
-        Dispositivo(string _tipo, int _id, string _ubicacion); //Constructor
+        Dispositivo(string tipo_, int id_, string ubicacion_); //Constructor
         virtual void encender() = 0;    //Metodo Abstracto encender sera sobreescrito
         virtual void apagar() = 0;      //Metodo Abstracto apagar sera sobreescrito
 
@@ -44,12 +42,12 @@ Dispositivo::Dispositivo()
     status = false;
     ubicacion = "NA";
 }
-Dispositivo::Dispositivo(string _tipo, int _id, string _ubicacion)
+Dispositivo::Dispositivo(string tipo_, int id_, string ubicacion_)
 {
-    tipo = _tipo;
-    id = _id;
+    tipo = tipo_;
+    id = id_;
     status = false;
-    ubicacion = _ubicacion;
+    ubicacion = ubicacion_;
 }
 
 void Dispositivo::set_status(bool s)
@@ -74,8 +72,8 @@ class Foco : public Dispositivo{
                 gasto = 0.0;
         }
 
-        Foco(string _tipo, int _id, string _ubicacion, int _potencia):Dispositivo(_tipo, _id, _ubicacion){  //Constructor
-            potencia = _potencia;
+        Foco(string tipo_, int id_, string ubicacion_, int potencia_):Dispositivo(tipo_, id_, ubicacion_){  //Constructor
+            potencia = potencia_;
             tiempo_uso = 0;
             gasto = 0.0;
         }
@@ -87,6 +85,13 @@ class Foco : public Dispositivo{
 
 };
 
+
+ /** encender codifica un mensaje para enviar al controlador
+  *  en posteriores versiones.
+  *  Ademas modifica el status respectivo a 1
+  *  @param
+  *  @return
+  */
 void Foco :: encender(){
     stringstream mensaje;
     mensaje << id<<"-ON";
@@ -99,8 +104,14 @@ void Foco :: encender(){
 
 }
 
-void Foco :: apagar(){
+ /** apagar codifica un mensaje para enviar al controlador
+  *  en posteriores versiones.
+  *  Ademas modifica el status del dispositivo a 0
+  *  @param
+  *  @return
+  */
 
+void Foco :: apagar(){
     stringstream mensaje;
     mensaje << id<<"-OFF";
 
@@ -111,6 +122,13 @@ void Foco :: apagar(){
     cout <<"Foco Apagado..."<<endl;
     status = false;
 }
+
+
+ /** calcular_gasto realiza el coste de energia utilizada por el dispositivo foco
+  *  mediante la multiplicacion del tiempo de uso por potencia.
+  *  @param
+  *  @return float con el gasto.
+  */
 
 
 float Foco :: calcular_gasto(){
@@ -132,8 +150,8 @@ class Aire : public Dispositivo{
             temperatura = 20;
         }
 
-        Aire(string _tipo, int _id, string _ubicacion, int _temperatura) : Dispositivo(_tipo, _id, _ubicacion) {  //Constructor
-            temperatura = _temperatura;
+        Aire(string tipo_, int id_, string ubicacion_, int temperatura_) : Dispositivo(tipo_, id_, ubicacion_) {  //Constructor
+            temperatura = temperatura_;
         }
         void encender();
         void apagar();
@@ -145,7 +163,12 @@ class Aire : public Dispositivo{
 
 };
 
-
+ /** encender codifica un mensaje para enviar al controlador
+  *  en posteriores versiones.
+  *  Ademas modifica el status del dispositivo a 1
+  *  @param
+  *  @return
+  */
 void Aire :: encender(){
 
     stringstream mensaje;
@@ -159,6 +182,13 @@ void Aire :: encender(){
 
 }
 
+ /** apagar codifica un mensaje para enviar al controlador
+  *  en posteriores versiones.
+  *  Ademas modifica el status del dispositivo a 0
+  *  @param
+  *  @return
+  */
+
 void Aire :: apagar() {
     stringstream mensaje;
     mensaje << id<<"-OFF-"<<temperatura;
@@ -170,6 +200,14 @@ void Aire :: apagar() {
     status=false;
 
 }
+
+
+ /** subir_temp codifica un mensaje para enviar al controlador
+  *  en posteriores versiones.
+  *  Ademas le suma a la variable temperatura la cantidad de grados indicada
+  *  @param int de grados a subir
+  *  @return
+  */
 
 void Aire :: subir_temp(int grados) {
 
@@ -184,6 +222,14 @@ void Aire :: subir_temp(int grados) {
 
 
 }
+
+
+ /** bajar_temp codifica un mensaje para enviar al controlador
+  *  en posteriores versiones.
+  *  Ademas le resta a la variable temperatura la cantidad de grados indicada
+  *  @param int de grados a bajar
+  *  @return
+  */
 
 void Aire :: bajar_temp(int grados) {
     stringstream mensaje;
@@ -207,15 +253,22 @@ class Ventilador : public Dispositivo{
             velocidad = "Slow";
         }
 
-        Ventilador(string _tipo, int _id, string _ubicacion, string _velocidad) : Dispositivo(_tipo, _id, _ubicacion) {  // Constructor
+        Ventilador(string tipo_, int id_, string ubicacion_, string velocidad_) : Dispositivo(tipo_, id_, ubicacion_) {  // Constructor
 
-            velocidad = _velocidad;
+            velocidad = velocidad_;
         }
         void encender();
         void apagar();
         void modificar_vel(string vel);
         string get_vel(){return velocidad;}
 };
+
+ /** encender codifica un mensaje para enviar al controlador
+  *  en posteriores versiones.
+  *  Ademas modifica el status del dispositivo a 1
+  *  @param
+  *  @return
+  */
 
 void Ventilador :: encender(){
     stringstream mensaje;
@@ -229,6 +282,13 @@ void Ventilador :: encender(){
 
 }
 
+ /** apagar codifica un mensaje para enviar al controlador
+  *  en posteriores versiones.
+  *  Ademas modifica el status del dispositivo a 0
+  *  @param
+  *  @return
+  */
+
 void Ventilador :: apagar(){
     stringstream mensaje;
     mensaje << id<<"-OFF-"<<velocidad;
@@ -240,6 +300,13 @@ void Ventilador :: apagar(){
     status=false;
 
 }
+
+ /** modificar_vel codifica un mensaje que en
+  *  posteriores versiones se enviara al controlador.
+  *  Ademas modifica la variable velocidad con el string indicado
+  *  @param string con nueva velocidad
+  *  @return
+  */
 
 void Ventilador :: modificar_vel(string vel){
     stringstream mensaje;
